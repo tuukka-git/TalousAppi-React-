@@ -1,24 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import { Route, Switch } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import Login from './components/Login';
+import PrivateRoute from './PrivateRoute';
+import UploadPage from './components/UploadPage';
+import Mainpage from './components/Mainpage';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+    <BrowserRouter>
+      <Switch>
+        <Route exact path='/login' component={Login} />
+        <PrivateRoute exact path='/' component={Mainpage} />
+        <PrivateRoute exact path='/mainpage' component={Mainpage}/>
+        <PrivateRoute exact path='/upload' component={UploadPage} />
+      </Switch>
+    </BrowserRouter>
+    </>
   );
 }
 
